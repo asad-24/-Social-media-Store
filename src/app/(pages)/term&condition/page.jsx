@@ -1,7 +1,20 @@
+'use client'
 import Image from "next/image";
-import mainLogo from "../../../public/logos/unleashedesires-logo.svg";
+import mainLogo from "../../../../public/logos/unleashedesires-logo.svg";
+import { useRouter } from "next/navigation";
 
 const TermAndCondition = () => {
+  const router = useRouter();
+
+  const handleAgreeClick = (e) => {
+    e.preventDefault();
+    router.push("/accountCreated"); // Change to your account created page route
+  };
+
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    router.push("/loginPage"); // Change to your login page route
+  };
   return (
     <>
        <div className="md:grid grid-cols-2 w-full h-screen">
@@ -22,6 +35,7 @@ const TermAndCondition = () => {
               <div>
                       <button
                         type="submit"
+                        onClick={handleAgreeClick}
                         className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
                       >
                         Agree
@@ -30,6 +44,7 @@ const TermAndCondition = () => {
               <div>
                       <button
                         type="submit"
+                        onClick={handleCancelClick}
                         className="group relative w-full flex justify-center py-3 px-4 border border-indigo-700 text-sm font-medium rounded-md text-white bg-transparant hover:bg-indigo-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-2"
                       >
                         Cancel

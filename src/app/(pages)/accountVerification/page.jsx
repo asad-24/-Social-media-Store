@@ -2,11 +2,11 @@
 
 import HeaderLogo from "@/components/HeaderLogo";
 import Image from "next/image";
-import uploadLogo from "../../../public/logos/upload-file.png";
-import camera from "../../../public/logos/Camera.png";
-import cameraWhite from "../../../public/logos/Camera-white.png";
-import verificationSuccessfully from "../../../public/logos/verificationSuccessfully.png";
-import loader from "../../../public/logos/loader.png";
+import uploadLogo from "../../../../public/logos/upload-file.png";
+import camera from "../../../../public/logos/Camera.png";
+import cameraWhite from "../../../../public/logos/Camera-white.png";
+import verificationSuccessfully from "../../../../public/logos/verificationSuccessfully.png";
+import loader from "../../../../public/logos/loader.png";
 import { useRef, useEffect, useState } from "react";
 
 const AccountVerification = () => {
@@ -77,10 +77,7 @@ const AccountVerification = () => {
       alert("Please upload both front and back sides of your ID card.");
       return;
     }
-   else if (!isPhotoTaken) {
-      alert("Please take photo.");
-      return;
-    }
+
    
     if (currentStep < 3) {
       const updatedCompletedSteps = [...completedSteps];
@@ -279,7 +276,7 @@ const AccountVerification = () => {
                   onClick={handleContinue}
                   className="group relative w-1/5 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-[#724EEB] hover:bg-[#764ef9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white mt-7"
 
-                  // disabled={!isPhotoTaken} // Disable button if no photo is taken
+                  disabled={!isPhotoTaken} // Disable button if no photo is taken
                 >
                   Continue
                 </button>

@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import mainLogo from "../../../public/logos/unleashedesires-logo.svg";
-import emailicon from "../../../public/logos/email-icon.svg";
-import emailbox from "../../../public/logos/iconamoon_email-light.png";
-import password from "../../../public/logos/password.png";
-import userLogo from "../../../public/logos/user-logo.png";
+import mainLogo from "../../../../public/logos/unleashedesires-logo.svg";
+import emailicon from "../../../../public/logos/email-icon.svg";
+import emailbox from "../../../../public/logos/iconamoon_email-light.png";
+import password from "../../../../public/logos/password.png";
+import userLogo from "../../../../public/logos/user-logo.png";
 import RippleButton from "@/components/RippleButton";
+import { useRouter } from "next/navigation";
+
 
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,12 +17,17 @@ const LoginPage = () => {
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
+  const router = useRouter();
 
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    router.push("/term&condition"); // Change to your terms and conditions page route
+  };
   return (
     <div className="md:grid grid-cols-2 w-full h-screen">
       <div className="relative bg-black md:h-full h-[100px] ">
         <div className="absolute inset-0 flex items-center justify-center ">
-          <Image src={mainLogo} alt="logo" className="w-[75%] md:w-full" />
+          <Image src={mainLogo} alt="logo" className="w-[75%]" />
         </div>
       </div>
       <div className="bg-black h-full inset-0 flex items-center justify-center py-5" >
@@ -112,13 +119,14 @@ const LoginPage = () => {
                       </div>
                     </div>
                     <div>
-                      <button
-                        type="submit"
-                        className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
-                      >
-                        Login
-                      </button>
-                    </div>
+      <button
+        type="submit"
+        className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
+        onClick={handleLoginClick}
+      >
+        Login
+      </button>
+    </div>
                     <p className="my-2 text-center text-sm text-gray-100 max-w">
                 {isLogin ? "New User ?" : ""}
                 <a href="#" className="font-medium text-gray-100 hover:text-blue-500 ms-1" onClick={toggleForm}>
