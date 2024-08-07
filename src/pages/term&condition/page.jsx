@@ -4,22 +4,19 @@ import mainLogo from "../../../public/logos/unleashedesires-logo.svg";
 const TermAndCondition = () => {
   return (
     <>
-       <div className="grid grid-cols-2 w-full h-screen">
-      <div className="relative bg-black h-full">
+       <div className="md:grid grid-cols-2 w-full h-screen">
+      <div className="relative bg-black md:h-full h-[100px] ">
         <div className="absolute inset-0 flex items-center justify-center">
-          <Image src={mainLogo} alt="logo" />
+          <Image src={mainLogo} alt="logo"className="w-[75%] md:w-full" />
         </div>
       </div>
       <div className="bg-black h-full inset-0 flex items-center justify-center   ">
         <div
-          className="flex flex-col sm:px-3 lg:px-10  "
+          className="flex flex-col px-10  w-full"
          
         >
-          <div
-            className="mt-4 sm:mx-auto sm:w-full sm:max-w-md "
-      
-          >
-            <div className=" bg-[#FFFFFF3B] py-8 px-1 shadow sm:rounded-lg sm:px-6">
+          <div className="mt-4 sm:mx-auto  px-10" >
+            <div className=" bg-[#FFFFFF3B] py-3  shadow rounded-lg md:px-10 px-2">
                 <h1 className="text-white text-3xl text-center font-semibold py-3">Terms & Conditions</h1>
               <p className="text-white"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam consequuntur quas aliquid incidunt beatae dignissimos aliquam nisi dolor, praesentium voluptas? Consectetur in, nulla  et excepturi alias quibusdam eligendi animi? Modi asperiores ad, necessitatibus magnam numquam recusandae debitis consectetur voluptatibus fugit velit nostrum dolorem inventore, nobis quo!</p>
               <div>

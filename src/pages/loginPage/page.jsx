@@ -17,16 +17,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-full h-screen">
-      <div className="relative bg-black h-full">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image src={mainLogo} alt="logo" />
+    <div className="md:grid grid-cols-2 w-full h-screen">
+      <div className="relative bg-black md:h-full h-[100px] ">
+        <div className="absolute inset-0 flex items-center justify-center ">
+          <Image src={mainLogo} alt="logo" className="w-[75%] md:w-full" />
         </div>
       </div>
-      <div className="bg-black h-full inset-0 flex items-center justify-center">
-        <div className="flex flex-col sm:px-3 lg:px-10" style={{ border: "2px solid red", width: "600px" }}>
+      <div className="bg-black h-full inset-0 flex items-center justify-center py-5" >
+        <div className="flex flex-col  px-10 w-full ">
           <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="bg-[#FFFFFF3B] py-3 px-2 shadow sm:rounded-lg sm:px-10">
+            <div className="bg-[#FFFFFF3B] py-3  shadow rounded-lg md:px-10 px-2">
             <div className="sm:mx-auto sm:w-full sm:max-w-md py-1 bg-black rounded-md flex px-1">
                 <span  onClick={() => setIsLogin(true)} className="w-[100%]">
                 <RippleButton
@@ -174,8 +174,9 @@ const LoginPage = () => {
                 ) : (
                   <>
                     {/* Sign Up Form */}
-                    <div>
-                      <div className="mt-1 relative">
+                   <div className="flex flex-col  gap-y-2">
+                   <div>
+                      <div className="mt-1 relative ">
                         <input
                           id="signup-user"
                           name="userName"
@@ -296,6 +297,7 @@ const LoginPage = () => {
                         Sign Up
                       </button>
                     </div>
+                   </div>
                   </>
                 )}
               </form>
