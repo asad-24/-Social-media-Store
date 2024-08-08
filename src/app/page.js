@@ -2,6 +2,13 @@
 import Image from "next/image";
 import AccountVerification from "./(pages)/accountVerification/page";
 import BootingPage from "./(pages)/bootingPage/page";
+import ForgotPassword from "./(pages)/forgotPassword/page";
+import verifyPhoneNumber from "./(pages)/verifyPhoneNumber/page";
+import VerifyNumber from "./(pages)/verifyPhoneNumber/page";
+import CreateNewPassword from "./(pages)/CreateNewPassword/page";
+import AgeVerification from "./(pages)/ageVerification/page";
+import Recaptcha from "./(pages)/recaptcha/page";
+import VerifyEmail from "./(pages)/emailVerification/page";
 
 
 export default function Home() {
@@ -14,6 +21,12 @@ export default function Home() {
      {/* <TermAndCondition/> */}
      {/* <AccountCreated/> */}
      {/* <AccountVerification/> */}
+     {/* <ForgotPassword/> */}
+     {/* <VerifyNumber /> */}
+     {/* <CreateNewPassword/> */}
+     {/* <AgeVerification/> */}
+     {/* <Recaptcha/> */}
+     {/* <VerifyEmail/> */}
      
     </main>
   );

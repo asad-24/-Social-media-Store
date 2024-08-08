@@ -8,6 +8,7 @@ import cameraWhite from "../../../../public/logos/Camera-white.png";
 import verificationSuccessfully from "../../../../public/logos/verificationSuccessfully.png";
 import loader from "../../../../public/logos/loader.png";
 import { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AccountVerification = () => {
   const videoRef = useRef(null);
@@ -18,6 +19,17 @@ const AccountVerification = () => {
   const [completedSteps, setCompletedSteps] = useState([false, false, false]);
   const [frontSideFile, setFrontSideFile] = useState(null);
   const [backSideFile, setBackSideFile] = useState(null);
+  const router = useRouter();
+  useEffect(() => {
+    if (currentStep === 3) {
+      const timer = setTimeout(() => {
+        router.push("/ageVerification");
+      }, 2000); // 2 seconds delay
+
+      // Cleanup the timer if the component is unmounted or currentStep changes
+      return () => clearTimeout(timer);
+    }
+  }, [currentStep, router]);
 
   useEffect(() => {
     let stream;
@@ -86,7 +98,7 @@ const AccountVerification = () => {
       setCurrentStep(currentStep + 1); // Move to the next step
     }
   };
-
+console.log("aaaaaaaaaaaaaaaaaaaaaa",currentStep)
 
   const handleFileChange = (e, side) => {
     const file = e.target.files[0];
@@ -150,7 +162,7 @@ const AccountVerification = () => {
                 worry, your data will stay safe and private.
               </p>
               <div className="flex justify-center items-center md:gap-x-14 md:flex-row flex-col gap-y-3">
-                <div className="bg-[#2B2B2B] w-[451px] h-[230px] p-[42.76px_26.72px] rounded-[42.76px] flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url(${frontSideImageURL})` }}>
+                <div className="bg-[#2B2B2B] md:w-[451px] w-full h-[230px] p-[42.76px_26.72px] rounded-[42.76px] flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url(${frontSideImageURL})` }}>
                   <div className="flex justify-center items-center flex-col">
                     <Image src={uploadLogo} alt="logo" />
                     <h4 className="text-[#9E9E9E] font-bold my-4">
@@ -169,7 +181,7 @@ const AccountVerification = () => {
                     </label>
                   </div>
                 </div>
-                <div className="bg-[#2B2B2B] w-[451px] h-[230px] p-[42.76px_26.72px] rounded-[42.76px] flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url(${backSideImageURL})` }}>
+                <div className="bg-[#2B2B2B] md:w-[451px] w-full h-[230px] p-[42.76px_26.72px] rounded-[42.76px] flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url(${backSideImageURL})` }}>
                   <div className="flex justify-center items-center flex-col">
                     <Image src={uploadLogo} alt="logo" />
                     <h4 className="text-[#9E9E9E] font-bold my-4">
@@ -222,7 +234,7 @@ const AccountVerification = () => {
                 <button
                   type="button"
                   onClick={handleContinue}
-                  className="group relative w-1/3 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white  bg-[#724EEB] hover:bg-[#764ef9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
+                  className="group relative md:w-1/3 w-1/2 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white  bg-[#724EEB] hover:bg-[#764ef9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
 // Disable button if files are not uploaded
                 >
                   Continue
@@ -267,14 +279,14 @@ const AccountVerification = () => {
                 <button
                   onClick={() => setIsPhotoTaken(false)}
                   type="button"
-                  className="group relative w-1/5 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-[#724EEB] bg-white hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white mt-7"
+                  className="group relative md:w-1/5 w-1/2 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-[#724EEB] bg-white hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white mt-7"
                 >
                   Retake
                 </button>
                 <button
                   type="button"
                   onClick={handleContinue}
-                  className="group relative w-1/5 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-[#724EEB] hover:bg-[#764ef9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white mt-7"
+                  className="group relative md:w-1/5 w-1/2 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-[#724EEB] hover:bg-[#764ef9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white mt-7"
 
                   disabled={!isPhotoTaken} // Disable button if no photo is taken
                 >

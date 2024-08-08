@@ -28,7 +28,7 @@ const TermAndCondition = () => {
           className="flex flex-col px-10  w-full"
          
         >
-          <div className="mt-4 sm:mx-auto  px-10" >
+          <div className="mt-4 sm:mx-auto  md:px-10 " >
             <div className=" bg-[#FFFFFF3B] py-3  shadow rounded-lg md:px-10 px-2">
                 <h1 className="text-white text-3xl text-center font-semibold py-3">Terms & Conditions</h1>
               <p className="text-white"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam consequuntur quas aliquid incidunt beatae dignissimos aliquam nisi dolor, praesentium voluptas? Consectetur in, nulla  et excepturi alias quibusdam eligendi animi? Modi asperiores ad, necessitatibus magnam numquam recusandae debitis consectetur voluptatibus fugit velit nostrum dolorem inventore, nobis quo!</p>

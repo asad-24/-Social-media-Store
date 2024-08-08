@@ -23,6 +23,10 @@ const LoginPage = () => {
     e.preventDefault();
     router.push("/term&condition"); // Change to your terms and conditions page route
   };
+  const handleForgotClick = (e) => {
+    e.preventDefault();
+    router.push("/forgotPassword"); // Change to your terms and conditions page route
+  };
   return (
     <div className="md:grid grid-cols-2 w-full h-screen">
       <div className="relative bg-black md:h-full h-[100px] ">
@@ -76,7 +80,7 @@ const LoginPage = () => {
                           autoComplete="email"
                           required
                           className="appearance-none rounded-md relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-300 text-white focus:outline-none bg-transparent focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm pl-12"
-                          placeholder="Email or USername"
+                          placeholder="Email or Username"
                         />
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                           <div className="relative  ">
@@ -113,7 +117,9 @@ const LoginPage = () => {
                         </label>
                       </div>
                       <div className="text-sm">
-                        <a href="#" className="font-medium text-gray-100 hover:text-blue-500">
+                        <a href="#" className="font-medium text-gray-100 hover:text-blue-500"
+                         onClick={handleForgotClick}
+                        >
                           Forgot password?
                         </a>
                       </div>
