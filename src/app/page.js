@@ -9,13 +9,14 @@ import CreateNewPassword from "./(pages)/CreateNewPassword/page";
 import AgeVerification from "./(pages)/ageVerification/page";
 import Recaptcha from "./(pages)/recaptcha/page";
 import VerifyEmail from "./(pages)/emailVerification/page";
+import MainDashboardHome from "./(pages)/mainDashboard-Home/page";
 
 
 export default function Home() {
   return (
     <main className="">
      {/* <h1>Main page.js</h1> */}
-     <BootingPage/>
+     {/* <BootingPage/> */}
      
      {/* <LoginPage/> */}
      {/* <TermAndCondition/> */}
@@ -27,6 +28,7 @@ export default function Home() {
      {/* <AgeVerification/> */}
      {/* <Recaptcha/> */}
      {/* <VerifyEmail/> */}
+     <MainDashboardHome/>
      
     </main>
   );
