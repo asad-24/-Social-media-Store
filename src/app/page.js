@@ -10,6 +10,9 @@ import AgeVerification from "./(pages)/ageVerification/page";
 import Recaptcha from "./(pages)/recaptcha/page";
 import VerifyEmail from "./(pages)/emailVerification/page";
 import MainDashboardHome from "./(pages)/mainDashboard-Home/page";
+import ExploreReels from "./(pages)/explore/page";
+import Friends from "./(pages)/friends/page";
+import Notifications from "./(pages)/notifications/page";
 
 
 export default function Home() {
@@ -29,6 +32,9 @@ export default function Home() {
      {/* <Recaptcha/> */}
      {/* <VerifyEmail/> */}
      <MainDashboardHome/>
+     {/* <ExploreReels/> */}
+     {/* <Friends/> */}
+     {/* <Notifications/> */}
      
     </main>
   );

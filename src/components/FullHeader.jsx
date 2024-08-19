@@ -12,6 +12,7 @@ import notification from "../../public/logos/notificationLogo.svg"
 import settingsLogo from "../../public/logos/sidebar/settingsLogo.svg"
 import chatLogo from "../../public/logos/IconAppChat.svg"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 const FullHeader = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -32,6 +33,23 @@ const FullHeader = () => {
         reader.readAsDataURL(file);
       }
     };
+
+
+
+    const router = useRouter();
+const handleNotifications = (e) => {
+  e.preventDefault();
+  router.push("/notifications"); // Change to your terms and conditions page route
+};
+const handleFriends= (e) => {
+  e.preventDefault();
+  router.push("/friends"); // Change to your terms and conditions page route
+};
+const handleExplore= (e) => {
+  e.preventDefault();
+  router.push("/explore"); // Change to your terms and conditions page route
+};
+
   return (
     <>
      
@@ -49,7 +67,7 @@ const FullHeader = () => {
 </div>
 <div className="flex justify-center items-center gap-x-2">
     
-    <Image src={notification} />
+    <Image src={notification} onClick={handleNotifications} className="cursor-pointer"/>
    <div className="relative">
    <div  className="h-10 w-10 bg-[rgb(114,78,235)] rounded-xl flex justify-center items-center">
     <Image src={chatLogo}/>
@@ -106,34 +124,34 @@ const FullHeader = () => {
     </div>
    </div>
    <div className="md:hidden block">
-   <div className="bg-black h-[13vh] flex justify-between items-center px-4 "
+   <div className="bg-black h-[10vh] flex justify-between items-center px-2 "
   >
 
 <div className=" flex justify-between items-center w-full ">
-<div className=" flex justify-start items-center w-[60%] gap-x-4  ">
-<p className="text-white" >Explore</p>
-<p className="text-white">Friends</p>
-<p className="text-white">Following</p>
+<div className=" flex justify-start items-center w-[50%] gap-x-2  ">
+<p className="text-white text-sm cursor-pointer" onClick={handleExplore} >Explore</p>
+<p className="text-white text-sm cursor-pointer" onClick={handleFriends}>Friends</p>
+<p className="text-white text-sm cursor-pointer" onClick={handleFriends}>Following</p>
 </div>
 
           
-<div className={`fixed top-0 left-0 w-full h-[55px] bg-black p-2 ${isSearchVisible ? 'block' : 'hidden'}`}>
- <div className="flex gap-x-2">
-  <Image src={back} onClick={toggleSearchBar}  />
+<div className={`fixed top-4 left-0 w-[100%] h-[30px] bg-black p-2 flex justify-center items-center ${isSearchVisible ? 'block' : 'hidden'}`}>
+ <div className="flex gap-x-2 justify-center items-center w-full mx-auto">
+  <Image src={back} onClick={toggleSearchBar} className="h-8 w-8" />
 
-<div className="flex justify-between items-center border border-2-purple-50  w-full h-[55px] rounded-full bg-transparent p-2 ">
+<div className="flex justify-between items-center border border-2-purple-50  w-[100%] h-[40px] rounded-full bg-transparent p-2 ">
     <input type="text" className="p-2 border-none bg-transparent h-full outline-none text-white" placeholder="Explore"  />
-   <div className="h-10 w-10 bg-[#724EEB] rounded-full flex justify-center items-center">
-   <Image src={searchIcon} alt="logo" />
+   <div className="h-7 w-7 bg-[#724EEB] rounded-full flex justify-center items-center">
+   <Image src={searchIcon} alt="logo" className="h-5 w-5" />
    </div>
 </div>
 </div>
 </div>
-<div className="flex justify-center items-center gap-x-4">
-<Image src={settingsLogo} className="h-8 w-8"/>
-    <Image src={notification} className="h-16 w-16"/>
-    <Image src={mobileSearch} className="h-8 w-8 cursor-pointer" onClick={toggleSearchBar}/>
-    <Image src={plusIcon} className="h-8 w-8"/>
+<div className={`flex justify-center items-center gap-x-2 ${isSearchVisible ? 'hidden' : 'block'} `}>
+<Image src={settingsLogo} className="h-5 w-5"/>
+    <Image src={notification} className="h-12 w-12" onClick={handleNotifications} />
+    <Image src={mobileSearch} className="h-6 w-6 cursor-pointer" onClick={toggleSearchBar}/>
+    <Image src={plusIcon} className="h-6 w-6"/>
 
    {/* <div className="relative">
    <div  className="h-10 w-10 bg-[rgb(114,78,235)] rounded-xl flex justify-center items-center">

@@ -14,6 +14,7 @@ import shareIcon from "../../../../public/images/shareIcon.svg";
 import girlAdultContent from "../../../../public/images/girlAdultContent.svg";
 import laptop from "../../../../public/images/laptop.svg";
 import mobile from "../../../../public/images/mobile.svg";
+import { useRouter } from "next/navigation";
 
 
 const MainDashboardHome = () => {
@@ -21,6 +22,15 @@ const MainDashboardHome = () => {
   const store = [laptop, mobile, laptop, mobile]; // Replace with actual image URLs
   const friends = [istBoy, istBoy, istBoy, istBoy]; // Replace with actual image URLs
 
+  const router = useRouter();
+  const handleNotifications = (e) => {
+    e.preventDefault();
+    router.push("/notifications"); // Change to your terms and conditions page route
+  };
+  const handleFriends= (e) => {
+    e.preventDefault();
+    router.push("/friends"); // Change to your terms and conditions page route
+  };
   return (
     <> 
       <FullHeader / >
@@ -181,7 +191,7 @@ const MainDashboardHome = () => {
         <h4 className="text-lg text-[#724EEB]">Friends</h4>
         <h4 className="text-lg">Following</h4>
       </div>
-      <h4 className="text-lg">See All</h4>
+      <h4 className="text-lg cursor-pointer" onClick={handleFriends}>See All</h4>
     </div>
 
     {friends.map((imageSrc, index) => (
