@@ -98,7 +98,7 @@ const AccountVerification = () => {
       setCurrentStep(currentStep + 1); // Move to the next step
     }
   };
-console.log("aaaaaaaaaaaaaaaaaaaaaa",currentStep)
+// console.log("aaaaaaaaaaaaaaaaaaaaaa",currentStep)
 
   const handleFileChange = (e, side) => {
     const file = e.target.files[0];

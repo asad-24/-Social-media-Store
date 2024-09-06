@@ -5,22 +5,49 @@ import businessLogo from "../../public/logos/sidebar/businessLogo.svg";
 import chatLogo from "../../public/logos/sidebar/chatLogo.svg";
 import eventLogo from "../../public/logos/sidebar/eventLogo.svg";
 import GroupLogo from "../../public/logos/sidebar/GroupLogo.svg";
+import nextLogo from "../../public/logos/sidebar/nextLogo.svg";
 import profileLogo from "../../public/logos/sidebar/profileLogo.svg";
 import settingsLogo from "../../public/logos/sidebar/settingsLogo.svg";
 import storeLogo from "../../public/logos/sidebar/storeLogo.svg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Link from 'next/link';
 
 const SideBar = () => {
   const [activeLink, setActiveLink] = useState('/mainDashboard-Home');
+  const [isCreateVisible, setCreateVisible] = useState(false);
+  const [createGroup, setCreateGroup] = useState(false);
   const router = useRouter();
 
   const handleLinkClick = (path) => {
     setActiveLink(path);
+    // if (path === '/groupPage') {
+    //   setCreateVisible(!isCreateVisible);
+    // } else {
+    //   setCreateVisible(false);
+    // }
+  
+    setActiveLink(path);
     router.push(path);
+   
+  };
+  const handleLinkClickCreate = () => {
+
+      setCreateGroup(!createGroup);
+    
+   
   };
 
+
+const handleNewGroup=(e)=>{
+  e.preventDefault();
+  router.push("/createGroupPage");
+}
+const handleNewPost=(e)=>{
+  e.preventDefault();
+  router.push("/createPostForGroup");
+}
   return (
     <>
       <div className="relative h-[82vh] lg:w-[20%] w-full">
@@ -41,11 +68,24 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/groups" onClick={() => handleLinkClick('/groups')} className={`flex items-center p-2 text-white rounded-lg dark:text-white ${activeLink === '/groups' ? 'bg-[#724EEB]' : 'hover:bg-[#724EEB] dark:hover:bg-gray-700'} group`}>
-                    <Image src={GroupLogo} alt="Groups Logo" />
-                    <span className="flex-1 ms-6 whitespace-nowrap">Groups</span>
-                  </Link>
-                </li>
+      <div className="flex flex-col">
+        <div className={`flex items-center justify-between p-2 text-white rounded-lg dark:text-white   ${activeLink === '/groupPage' ? 'bg-[#724EEB]' : 'hover:bg-[#724EEB] dark:hover:bg-gray-700'} group`}>
+          <Link href="/groupPage" onClick={() => handleLinkClick('/groupPage')} className={`flex items-center text white justify-center`}>
+            <Image src={GroupLogo} alt="Groups Logo" />
+            <span className="flex-1 ms-6 whitespace-nowrap text-white ">Groups</span>
+          </Link>
+          <button onClick={() => setCreateVisible(!isCreateVisible)} className="focus:outline-none ms-2">
+            {isCreateVisible ? <FaChevronUp className="text-white" /> : <FaChevronDown className="text-white" />}
+          </button>
+        </div>
+
+        {isCreateVisible  && (
+          <Link href="#"   onClick={handleLinkClickCreate} className={`flex items-center hover:bg-[#724EEB] p-2 text-white rounded-lg dark:text-white ms-12 mt-2  group`}>
+            <span className="flex-1 whitespace-nowrap">Create</span>
+          </Link>
+        )}
+      </div>
+    </li>
                 <li>
                   <Link href="/store" onClick={() => handleLinkClick('/store')} className={`flex items-center p-2 text-white rounded-lg dark:text-white ${activeLink === '/store' ? 'bg-[#724EEB]' : 'hover:bg-[#724EEB] dark:hover:bg-gray-700'} group`}>
                     <Image src={storeLogo} alt="Store Logo" />
@@ -123,6 +163,23 @@ const SideBar = () => {
           </ul>
         </div>
       </div>
+
+  {createGroup&&    <div className="w-[716px] h-[391px] rounded-3xl bg-[#1E1E1E] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 flex flex-col justify-center items-center">
+        <div className="flex justify-between items-center p-4 w-full cursor-pointer hover:bg-[#3c3c3c]" onClick={handleNewGroup}>
+        <div className="" >
+            <p className="text-white text-2xl my-5">Create a Group</p>
+            <p className="text-white text-md ">Create  a public or private group.</p>
+          </div>
+<Image src={nextLogo} />
+        </div >
+        <div className="flex justify-between items-center p-4 w-full cursor-pointer hover:bg-[#3c3c3c]"  onClick={handleNewPost} >
+        <div className="">
+            <p className="text-white text-2xl my-5">Post in a Group</p>
+            <p className="text-white text-md ">Post in a group you’ve joined</p>
+          </div>
+<Image src={nextLogo}/>
+        </div>
+      </div>}
     </>
   );
 };

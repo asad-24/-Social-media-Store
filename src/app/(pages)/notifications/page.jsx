@@ -19,13 +19,13 @@ const Notifications = () => {
           // Black gradient
         }}
       >
-        <div className="  p-8  overflow-y-auto h-full no-scrollbar">
+        <div className="  md:p-8 p-1 pb-10 overflow-y-auto h-full no-scrollbar">
         
         <h2 className='text-white text-2xl '>Notifications</h2>
       <p className='text-white text-md my-5 '>This week (8)</p>
       {notification.map((imgSrc, index) => (
   <div 
-    className='w-full h-[102.55px] bg-[#221D1C] rounded-lg flex gap-x-8 items-center px-6 my-3' 
+    className='w-full h-[102.55px] bg-[#221D1C] rounded-lg flex md:gap-x-8 gap-x-4 items-center md:px-6 px-2 my-3' 
     key={index}
   >
     <div className="w-20 h-20 rounded-xl overflow-hidden relative border-2 border-[#724EEB]">
@@ -39,7 +39,7 @@ const Notifications = () => {
     </div>
 
     <div>
-      <p className='text-white text-md'>john11 liked your comment: Awesome! Nice.</p>
+      <p className='text-white md:text-md text-sm'>john11 liked your comment: Awesome! Nice.</p>
       <p className='text-white text-sm'>1 day</p>
     </div>
   </div>
