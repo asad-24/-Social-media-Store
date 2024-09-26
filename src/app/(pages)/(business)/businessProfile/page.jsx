@@ -28,17 +28,29 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import istBoy from "../../../../../public/images/1stBoy.svg";
 import isGirl from "../../../../../public/images/isGirl.svg";
+
 const BusinessProfile = () => {
 
     const [selectedIcon, setSelectedIcon] = useState(1);
 
     const [isEditing, setIsEditing] = useState(false);
+    const [isWriteReview, setIsWriteReview] = useState(true);
     const [businessName, setBusinessName] = useState('Business name');
+    const [rating, setRating] = useState(0); // State to track the current rating
 
+    // Handle star click
+    const handleStarClick = (index) => {
+      setRating(index + 1); // Update rating based on clicked star (1-based)
+    };
     // Toggle edit mode
 const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
+    // Toggle edit mode
+    const handleInputChange1 = (e) => {
+        const value = Math.min(Math.max(e.target.value, ), 5); // Ensure value is between 0 and 5
+        setRating(value);
+      };
   
   // Handle input change
   const handleInputChange = (e) => {
@@ -134,7 +146,9 @@ const handleEditClick = () => {
         <div className="  md:p-8 p-1 pb-10 overflow-y-auto h-full no-scrollbar w-full">
         
    
-   <div className='flex flex-wrap p-3   '  >
+   {isWriteReview ?( 
+   <>
+     <div className='flex flex-wrap p-3   '  >
 <div className='flex flex-col  gap-x-6 lg:w-[70%] w-full  flex-wrap'>
 <div className='h-44 w-44 rounded-full bg-transparent relative'>
     <Image src={OtherProfilepic}
@@ -144,6 +158,7 @@ const handleEditClick = () => {
     />
 
 </div>
+<div className='relative w-[70%]'>
 <div className="flex justify-start items-center gap-x-4 my-5 ">
       {isEditing ? (
         <input
@@ -185,6 +200,19 @@ const handleEditClick = () => {
          </>
       ))}
     </div>
+ {selectedIcon === 4 && (
+        <div className='absolute right-0 top-5 my-5'>
+          <button
+          onClick={()=>setIsWriteReview(!isWriteReview)}
+            type="submit"
+            className="group relative mx-auto flex justify-center items-center gap-x-2 py-3 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <CiCirclePlus className='h-5 w-5 font-bold' />
+            Add Review
+          </button>
+        </div>
+      )}
+</div>
 </div>
 <div className='lg:w-[30%] flex flex-col w-full ' >
     <div className='h-auto w-full bg-[#171717] flex flex-col  gap-x-5 r rounded-2xl p-4'>
@@ -208,6 +236,7 @@ const handleEditClick = () => {
 
 
    </div>
+
 
   
 
@@ -411,8 +440,104 @@ const handleEditClick = () => {
 
 
   </>}
-      
-       
+
+  </>
+
+):(
+
+<div>
+      <div className='flex lg:justify-start justify-center items-center gap-x-6 lg:w-[70%] w-full flex-wrap'>
+        <div className='h-44 w-44 rounded-full bg-transparent relative'>
+          <Image
+            src={OtherProfilepic}
+            alt="Profile picture"
+            className='absolute inset-0 rounded-full'
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className='flex flex-col gap-y-4 items-center'>
+          <p className='text-2xl text-white font-semibold'>William Jones</p>
+          <p className='text-sm text-white flex items-center'>
+            <FaLocationDot className='h-6 w-6 text-[#724EEB]' />
+            Los Angeles, CA
+          </p>
+        </div>
+      </div>
+
+      <div className='h-[200px] w-[40%] bg-[#404040] my-6 rounded-3xl p-3'>
+        <p className='text-2xl font-medium text-white text-center'>Review</p>
+        <div className='flex justify-between items-center my-4'>
+          <p className='text-md font-medium text-white'>Review to William</p>
+          <p className='text-md font-medium text-white'>08/09/2023</p>
+        </div>
+        <p className='text-sm text-white'>About</p>
+
+        {/* Star Rating */}
+        <div className="flex items-center gap-1 my-4">
+          {Array.from({ length: 5 }).map((_, i) => {
+            const fill = i < Math.floor(rating) ? "#FBBF24" : "#E5E7EB"; // Full stars
+            const halfFill = rating - i >= 0.5 && rating - i < 1 ? "url(#half)" : ""; // Half star logic
+
+            return (
+              <svg
+                key={i}
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill={fill}
+                viewBox="0 0 30 30"
+              >
+                <defs>
+                  <linearGradient id="half" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="50%" style={{ stopColor: "#FBBF24", stopOpacity: 1 }} />
+                    <stop offset="50%" style={{ stopColor: "#E5E7EB", stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+                <path
+                  fill={halfFill || fill}
+                  d="M14.103 2.567c.367-.743 1.427-.743 1.794 0l3.28 6.644a1 1 0 00.754.547l7.332 1.065c.82.12 1.148 1.127.555 1.706l-5.305 5.172a1 1 0 00-.287.884l1.252 7.302c.14.817-.718 1.44-1.452 1.055l-6.558-3.448a1 1 0 00-.93 0l-6.558 3.448c-.734.385-1.593-.238-1.453-1.055l1.253-7.302a1 1 0 00-.288-.884L2.739 12.53c-.592-.579-.264-1.586.555-1.706l7.332-1.065a1 1 0 00.754-.547l3.28-6.644z"
+                />
+              </svg>
+            );
+          })}
+
+          {/* Input field for rating */}
+          <div className='flex items-center gap-1 border rounded px-2 py-1'>
+  <input
+    type="number"
+    value={rating}
+    onChange={handleInputChange1}
+    className='text-white outline-none bg-transparent w-10'
+    step="0.1"
+    min="0"
+    max="5"
+    placeholder='0'
+    style={{
+      appearance: "textfield", // Ensure it's styled as a text field without number spinner
+    }}
+  />
+  <p className="text-white">/5</p>
+</div>
+
+        </div>
+      </div>
+      <h2 className='text-white text-2xl '>Write a Review </h2>
+      <textarea
+    className="py-4 w-full bg-transparent rounded-2xl border my-2 px-4 text-white"
+    placeholder="Write a Review ...."
+    rows="4" // Adjust the number of rows to change the height
+  ></textarea>
+  <button
+    onClick={()=>setIsWriteReview(!isWriteReview)}
+        type="submit"
+        className="group relative md:w-1/3 w-1/2 mx-auto flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-7"
+        // onClick={handleLoginClick}
+      >
+        Submit Review
+      </button>
+    </div>
+)}
         </div>
       </div>
     </div>

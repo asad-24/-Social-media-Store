@@ -28,6 +28,11 @@ import VideoCalling from "./(pages)/(chats)/videoCalling/page";
 import OtherProfile from "./(pages)/(profile)/profle/page";
 import CreateBusinessProfile from "./(pages)/(business)/createBusinessProfile/page";
 import BusinessProfile from "./(pages)/(business)/businessProfile/page";
+import EmporiumStore from "./(pages)/(Emporium)/Emporium/page";
+import NewProducts from "./(pages)/(Emporium)/newProducts/page";
+import ProductDetails from "./(pages)/(Emporium)/productDetails/page";
+import Cart from "./(pages)/(Emporium)/cart/page";
+import PaymentSummary from "./(pages)/(payment)/summary/page";
 
 
 export default function Home() {
@@ -66,8 +71,12 @@ export default function Home() {
      {/* <Chats/> */}
      {/* <OtherProfile/> */}
      {/* <CreateBusinessProfile/> */}
-     <BusinessProfile/>
-     
+     {/* <BusinessProfile/> */}
+     {/* <EmporiumStore/> */}
+     {/* <NewProducts/> */}
+     {/* <ProductDetails/> */}
+     {/* <Cart/> */}
+     <PaymentSummary/>
     </main>
   );
 }
